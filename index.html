@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Visual Quest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- HUD -->
+  <div id="hud">
+    <div class="hi">PUNTOS <span id="s-score">0</span></div>
+    <div id="lives-row">VIDAS 3</div>
+    <div class="hi">RACHA <span id="s-combo">x1</span></div>
+    <button class="music-toggle" id="music-toggle" type="button"
+            aria-label="Activar música" aria-pressed="false"
+            title="Activar música" onclick="toggleMusic()">♫</button>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div id="prog-wrap">
+    <div id="prog-track"><div id="prog-fill" style="width:0%"></div></div>
+    <div id="prog-lbl">VISUAL QUEST</div>
+  </div>
+
+  <!-- PANEL -->
+  <div id="panel" class="screen-start">
+    <canvas id="conf-canvas"></canvas>
+
+    <!-- START -->
+    <div class="scr on" id="sc-start">
+      <span class="big-e">Comunicación Visual</span>
+      <h1>SIMULADOR</h1>
+      <p>
+        Viví 3 experiencias distintas<br>
+        y aprendé <strong>Comunicación Visual</strong>:<br><br>
+        <span class="tag">Estudio de Arte</span>
+        <span class="tag">Museo</span>
+        <span class="tag">Aventura Visual</span><br><br>
+        Colores · Composición · Vanguardias
+      </p>
+      <button class="btn y" onclick="startGame()">COMENZAR</button>
+    </div>
+
+    <!-- LEVEL INTRO -->
+    <div class="scr" id="sc-intro">
+      <span class="big-e" id="li-e"></span>
+      <div class="li-card">
+        <h3 id="li-sub"></h3>
+        <p id="li-desc"></p>
+      </div>
+      <button class="btn g" onclick="beginLevel()">EMPEZAR</button>
+    </div>
+
+    <!-- SIMULATION -->
+    <div id="sim">
+      <div id="scene-header">
+        <div id="scene-info">
+          <div id="scene-who"></div>
+          <div id="scene-msg"></div>
+        </div>
+      </div>
+      <div id="narr-box">
+        <span id="narr-text"></span>
+      </div>
+      <canvas id="art-preview" width="300" height="160" style="display:none"></canvas>
+      <div id="decisions" style="display:none"></div>
+      <div id="museum-zone" style="display:none"></div>
+      <div id="fb"></div>
+      <button class="btn y" id="nxt-btn" onclick="nextStep()">SIGUIENTE</button>
+    </div>
+
+    <!-- LEVEL CLEAR -->
+    <div class="scr" id="sc-clear">
+      <span class="big-e">OK</span>
+      <h2 id="cl-title"></h2>
+      <div class="res-row" id="cl-body"></div>
+      <button class="btn y" id="cl-btn" onclick="nextLevel()"></button>
+    </div>
+
+    <!-- WIN -->
+    <div class="scr" id="sc-win">
+      <h1>¡LO LOGRASTE!</h1>
+      <div class="score-big" id="w-score"></div>
+      <div class="res-row" id="w-body"></div>
+      <button class="btn y" onclick="startGame()">JUGAR DE NUEVO</button>
+      <div class="credits">
+        <h2>CRÉDITOS</h2>
+        <p><strong>Autoras</strong><br>
+          Estudiante de informática Lucia Radriguez<br>
+          Estudiante de Comunicación visual Adelaida Quijano
+        </p>
+        <p><strong>Profesor responsable</strong><br>
+          Domingo Pérez
+        </p>
+      </div>
+    </div>
+
+    <!-- GAME OVER -->
+    <div class="scr" id="sc-over">
+      <span class="big-e" style="animation:none">FIN</span>
+      <h2 style="color:var(--red)">¡OH NO!</h2>
+      <div class="res-row" id="ov-body"></div>
+      <button class="btn p" onclick="startGame()">REINTENTAR</button>
+      <div class="credits">
+        <h2>CRÉDITOS</h2>
+        <p><strong>Autoras</strong><br>
+          Estudiante de informática Lucia Radriguez<br>
+          Estudiante de Comunicación visual Adelaida Quijano
+        </p>
+        <p><strong>Profesor responsable</strong><br>
+          Domingo Pérez
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /panel -->
+</div><!-- /app -->
+
+<script src="game.js"></script>
+</body>
+</html>
